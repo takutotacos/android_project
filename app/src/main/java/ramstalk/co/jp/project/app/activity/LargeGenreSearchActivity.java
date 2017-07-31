@@ -116,9 +116,9 @@ public class LargeGenreSearchActivity extends AppCompatActivity
     public void showLargeGenreList(List<LargeGenre> largeGenres) {
         final GenreAdapter<LargeGenre> largeGenreAdapter = new GenreAdapter<>(getApplicationContext());
         largeGenreAdapter.setGenreList(largeGenres);
-        binding.lvLargeTopic.setAdapter(largeGenreAdapter);
+        binding.lvLargeGenre.setAdapter(largeGenreAdapter);
 
-        binding.lvLargeTopic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.lvLargeGenre.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String clickedId = String.valueOf(largeGenreAdapter.getItemId(position));
@@ -130,7 +130,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
 
     @Override
     public void hideLargeGenreList() {
-        binding.lvLargeTopic.setVisibility(View.GONE);
+        binding.lvLargeGenre.setVisibility(View.GONE);
         binding.tvLargeGenreNotFound.setVisibility(View.VISIBLE);
     }
 
