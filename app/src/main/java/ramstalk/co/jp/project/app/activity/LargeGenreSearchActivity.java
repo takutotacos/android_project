@@ -109,6 +109,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
                 return true;
             }
         });
+        popup.show();
     }
 
     @Override
