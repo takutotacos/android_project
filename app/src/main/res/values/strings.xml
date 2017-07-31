@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Project</string>
+
+    <!-- コンテンツがない -->
+    <string name="no_updated_content_to_show">更新されたコンテンツはありません</string>
+    <string name="no_content_found">お探しのページは見つかりません</string>
+    <string name="no_genre_found">表示できるジャンルが見つかりません</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_topic_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ramstalk.co.jp.project.app.activity.TopicList">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/Toolbar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <TextView
+            android:id="@+id/tv_large_genre_not_found"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/no_genre_found"
+            android:textSize="@dimen/text_m"
+            android:textColor="@color/dim_gray"
+            android:visibility="gone"/>
+
+        <ListView
+            android:id="@+id/lv_large_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_layout"/>
+    </RelativeLayout>
+</layout>
