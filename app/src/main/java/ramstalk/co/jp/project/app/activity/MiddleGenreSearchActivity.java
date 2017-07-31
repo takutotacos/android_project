@@ -52,14 +52,14 @@ public class MiddleGenreSearchActivity extends AppCompatActivity implements Midd
 
     @Override
     public void showMiddleGenreList(List<MiddleGenre> middleGenres) {
-        final GenreAdapter<MiddleGenre> largeGenreAdapter = new GenreAdapter<>(getApplicationContext());
-        largeGenreAdapter.setGenreList(middleGenres);
-        binding.lvMiddleGenre.setAdapter(largeGenreAdapter);
+        final GenreAdapter<MiddleGenre> middleGenreGenreAdapter = new GenreAdapter<>(getApplicationContext());
+        middleGenreGenreAdapter.setGenreList(middleGenres);
+        binding.lvMiddleGenre.setAdapter(middleGenreGenreAdapter);
 
         binding.lvMiddleGenre.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedId = String.valueOf(largeGenreAdapter.getItemId(position));
+                String clickedId = String.valueOf(middleGenreGenreAdapter.getItemId(position));
                 Intent i = MiddleGenreSearchActivity.createIntent(getApplicationContext(), clickedId);
                 startActivity(i);
             }
