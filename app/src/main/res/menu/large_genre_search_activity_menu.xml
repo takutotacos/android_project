@@ -10,11 +10,11 @@
 
     <item
         android:id="@+id/menu_shinjuku"
-        android:title="Shinjuku"
+        android:title="hahahahah"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/menu_shibuya"
-        android:title="Shibuya"
+        android:title="buhahahah"
         app:showAsAction="never"/>
 </menu>

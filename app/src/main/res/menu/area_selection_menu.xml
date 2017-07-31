@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_shinjuku"
+        android:title="shinjuku"/>
+
+    <item
+        android:id="@+id/menu_nakano"
+        android:title="nakano"/>
+
+    <item
+        android:id="@+id/menu_shibuya"
+        android:title="shibuya"/>
+</menu>

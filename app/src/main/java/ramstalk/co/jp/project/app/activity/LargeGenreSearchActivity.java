@@ -65,7 +65,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.large_genre_area_selection_menu, menu);
+        inflater.inflate(R.menu.large_genre_search_activity_menu, menu);
         return true;
     }
 
@@ -82,7 +82,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
 
     private void showAreaSelectingPopUpMenu() {
         PopupMenu popup = new PopupMenu(getApplicationContext(), findViewById(R.id.menu_filter));
-        popup.getMenuInflater().inflate(R.menu.large_genre_area_selection_menu, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.area_selection_menu, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -94,6 +94,10 @@ public class LargeGenreSearchActivity extends AppCompatActivity
 
                     case R.id.menu_shibuya:
                         areaCd = "shibuya";
+                        break;
+
+                    case R.id.menu_nakano:
+                        areaCd = "nakano";
                         break;
 
                     default:
