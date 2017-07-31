@@ -43,6 +43,10 @@ public class LargeGenreSearchActivityPresenter implements LargeGenreSearchActivi
                 getLargeGenreList("12");
                 break;
 
+            case "nakano":
+                getLargeGenreList("13");
+                break;
+
             default:
                 getLargeGenreList("1");
         }
