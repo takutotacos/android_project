@@ -101,7 +101,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
                         break;
 
                     default:
-                        areaCd = "shinjuku";
+                        areaCd = "none";
                 }
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(AREA_CD, areaCd);

@@ -44,7 +44,7 @@ public class LargeGenreSearchActivityPresenter implements LargeGenreSearchActivi
                 break;
 
             default:
-                getLargeGenreList("3");
+                getLargeGenreList("1");
         }
     }
 
