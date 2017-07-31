@@ -26,7 +26,7 @@ public class RetrofitAdapter {
         return retrofit;
     }
 
-    private static final String baseUrl = "http://10.0.2.2:8000/project/";
+    private static final String baseUrl = "http://localhost:8000/project/";
 //    private Retrofit retrofit;
 ////
 //    public static Retrofit getRetrofit() {
