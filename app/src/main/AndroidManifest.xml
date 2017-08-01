@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.activity.MiddleGenreSearchActivity"></activity>
+        <activity android:name=".app.activity.SignUpActivity">
+        </activity>
     </application>
 
 </manifest>

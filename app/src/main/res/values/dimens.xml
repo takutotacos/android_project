@@ -9,11 +9,16 @@
     <dimen name="dp_08">8dp</dimen>
     <dimen name="dp_12">12dp</dimen>
     <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
 
     <!-- margin -->
     <dimen name="margin_s">@dimen/dp_04</dimen>
     <dimen name="margin_m">@dimen/dp_08</dimen>
     <dimen name="margin_l">@dimen/dp_12</dimen>
+    <dimen name="margin_xl">@dimen/dp_16</dimen>
+    <dimen name="margin_xxl">@dimen/dp_20</dimen>
+
+
 
     <!-- padding -->
     <dimen name="padding_s">@dimen/dp_04</dimen>

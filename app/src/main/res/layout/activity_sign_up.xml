@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ramstalk.co.jp.project.app.activity.SignUpActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/Toolbar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/left_guide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintGuide_percent="0.1"
+            android:orientation="vertical"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/right_guide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintGuide_percent="0.9"
+            android:orientation="vertical"/>
+
+        <TextView
+            android:id="@+id/tv_mail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="メールアドレス"
+            android:textSize="@dimen/text_m"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            android:layout_marginTop="@dimen/margin_xl"/>
+
+        <EditText
+            android:id="@+id/ed_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_mail"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            android:layout_marginTop="@dimen/margin_xl"
+            android:layout_marginBottom="@dimen/margin_l"/>
+
+
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="パスワード"
+            android:textSize="@dimen/text_m"
+            app:layout_constraintTop_toBottomOf="@id/ed_email"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            android:layout_marginTop="@dimen/margin_xl"/>
+
+        <EditText
+            android:id="@+id/ed_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            app:layout_constraintTop_toBottomOf="@id/tv_password"
+            android:layout_marginTop="@dimen/margin_l"/>
+
+        <TextView
+            android:id="@+id/tv_password_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="パスワード（確認）"
+            android:textSize="@dimen/text_m"
+            app:layout_constraintTop_toBottomOf="@id/ed_password"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            android:layout_marginTop="@dimen/margin_xl"/>
+
+        <EditText
+            android:id="@+id/ed_password_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            app:layout_constraintTop_toBottomOf="@id/tv_password_confirm"
+            android:layout_marginTop="@dimen/margin_l"/>
+
+        <Button
+            android:id="@+id/tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登録"
+            android:textSize="@dimen/text_xl"
+            android:gravity="center"
+            android:padding="@dimen/padding_xl"
+            android:background="@color/colorAccent"
+            app:layout_constraintLeft_toLeftOf="@id/left_guide"
+            app:layout_constraintRight_toRightOf="@id/right_guide"
+            app:layout_constraintTop_toBottomOf="@id/ed_password_confirm"
+            android:layout_marginTop="@dimen/margin_xxl"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
