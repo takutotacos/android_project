@@ -11,6 +11,8 @@ public interface SignUpActivityContract {
     interface View {
         void processUserRegisterSuccess();
 
+        void showNameValidationError(String error);
+
         void showEmailValidationError(String error);
 
         void showPasswordValidationError(String error);

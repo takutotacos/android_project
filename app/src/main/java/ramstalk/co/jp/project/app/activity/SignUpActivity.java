@@ -50,8 +50,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityC
         String email = binding.edEmail.toString();
         String password = binding.edPassword.toString();
         String passwordConfirmation = binding.edPasswordConfirm.toString();
+        String name = binding.edName.getText().toString();
 
         User user = new User();
+        user.setName(name);
         user.setEmail(email);
         user.setPassword(password);
         user.setPassowrdConfirmation(passwordConfirmation);
@@ -75,6 +77,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityC
         Intent i = new Intent(getApplicationContext(), LargeGenreSearchActivity.class);
         startActivity(i);
         finish();
+    }
+
+    @Override
+    public void showNameValidationError(String error) {
+        binding.edName.setError(error);
     }
 
     @Override

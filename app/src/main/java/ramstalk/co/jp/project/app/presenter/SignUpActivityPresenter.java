@@ -22,6 +22,7 @@ public class SignUpActivityPresenter implements SignUpActivityContract.Presenter
 
     @Override
     public void postUserInfo(User user) {
+        String name = user.getName();
         String email = user.getEmail();
         String password = user.getPassword();
         String passwordConfirmation = user.getPassowrdConfirmation();
