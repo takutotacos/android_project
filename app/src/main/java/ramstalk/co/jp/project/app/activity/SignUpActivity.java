@@ -75,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityC
 //        SharedPreferences.Editor editor =
 
         Intent i = new Intent(getApplicationContext(), LargeGenreSearchActivity.class);
+        i.putExtra(LargeGenreSearchActivity.MESSAGE_FOR_TOAST, "登録が完了しました。");
         startActivity(i);
         finish();
     }

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import ramstalk.co.jp.project.R;
 import ramstalk.co.jp.project.app.adapter.GenreAdapter;
 import ramstalk.co.jp.project.app.contract.LargeGenreSearchActivityContract;
 import ramstalk.co.jp.project.app.presenter.LargeGenreSearchActivityPresenter;
+import ramstalk.co.jp.project.app.util.StringUtil;
 import ramstalk.co.jp.project.data.LargeGenre;
 import ramstalk.co.jp.project.databinding.ActivityLargeGenreSearchBinding;
 import ramstalk.co.jp.project.domain.repository.factory.ApiErrorView;
@@ -33,6 +35,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
 
     private static final String SHARED_PREFERENCES_NAME = "DataStore";
     private static final String AREA_CD = "area_cd";
+    public static final String MESSAGE_FOR_TOAST = "message_for_toast";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
+        showToast();
 
         LargeGenreSearchActivityContract.View view = this;
         ApiErrorView apiErrorView = this;
@@ -142,5 +146,14 @@ public class LargeGenreSearchActivity extends AppCompatActivity
     @Override
     public void showServerError(String message) {
 
+    }
+
+    private void showToast() {
+        String message = getIntent().getStringExtra(MESSAGE_FOR_TOAST);
+        if (StringUtil.isEmpty(message)) {
+            return;
+        }
+
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
