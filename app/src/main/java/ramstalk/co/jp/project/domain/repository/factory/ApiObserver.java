@@ -25,11 +25,11 @@ public abstract class ApiObserver<T> extends DisposableObserver<T> {
     @Override
     public void onError(Throwable e) {
         if (e instanceof IOException) {
-            // ネットワークエラー
+            view.showNetworkError(e.getMessage());
         } else if (e instanceof HttpException) {
-            // サーバエラー
+            view.showServerError(e.getMessage());
         } else {
-
+            view.showServerError(e.getMessage());
         }
     }
 }
