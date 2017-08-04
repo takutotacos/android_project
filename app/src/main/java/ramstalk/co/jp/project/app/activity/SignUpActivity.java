@@ -47,10 +47,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityC
     }
 
     private User createUserFromInput() {
-        String email = binding.edEmail.toString();
-        String password = binding.edPassword.toString();
-        String passwordConfirmation = binding.edPasswordConfirm.toString();
         String name = binding.edName.getText().toString();
+        String email = binding.edEmail.getText().toString();
+        String password = binding.edPassword.getText().toString();
+        String passwordConfirmation = binding.edPasswordConfirm.getText().toString();
 
         User user = new User();
         user.setName(name);
