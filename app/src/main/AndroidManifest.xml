@@ -13,17 +13,20 @@
         <activity
             android:name=".app.activity.LargeGenreSearchActivity"
             android:theme="@style/AppTheme.OverlapSystemBar">
+        </activity>
+
+        <activity android:name=".app.activity.MiddleGenreSearchActivity"/>
+
+        <activity android:name=".app.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".app.activity.MiddleGenreSearchActivity"/>
-        <activity android:name=".app.activity.LoginActivity">
-        </activity>
+
         <activity android:name=".app.activity.SignUpActivity">
         </activity>
-    </application>
 
+    </application>
 </manifest>
