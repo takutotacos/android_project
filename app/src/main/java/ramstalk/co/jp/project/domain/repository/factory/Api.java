@@ -25,4 +25,8 @@ public interface Api {
     @POST("user/create/")
     Observable<String> postCreateUser(@Field("name") String name, @Field("email") String email, @Field("password") String password);
 
+    @FormUrlEncoded
+    @POST("user/login/")
+    Observable<String> postLogin(@Field("email") String email, @Field("password") String password);
+
 }

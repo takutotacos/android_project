@@ -39,4 +39,12 @@ public class ApiUtil {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public static Observable<String> postLogin(String email, String password) {
+        return RetrofitAdapter.getRetrofit()
+                .create(Api.class)
+                .postLogin(email, password)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }
