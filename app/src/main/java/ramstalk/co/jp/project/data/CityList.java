@@ -6,11 +6,11 @@ import com.bluelinelabs.logansquare.annotation.JsonObject;
 import java.util.List;
 
 /**
- * Created by sugitatakuto on 2017/07/25.
+ * Created by takuto.sugita on 2017/08/05.
  */
 
 @JsonObject
-public class Prefecture extends BaseData {
+public class CityList {
     @JsonField(name="city_list")
     private List<City> cityList;
 
