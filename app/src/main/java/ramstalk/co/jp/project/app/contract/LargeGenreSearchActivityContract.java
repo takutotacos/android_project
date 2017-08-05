@@ -14,6 +14,8 @@ public interface LargeGenreSearchActivityContract {
         void showLargeGenreList(List<LargeGenre> largeGenreList);
 
         void hideLargeGenreList();
+
+        void changeMasterDataLoadStatusTo(boolean val);
     }
 
     interface UserAction {

@@ -21,6 +21,7 @@ import ramstalk.co.jp.project.app.adapter.GenreAdapter;
 import ramstalk.co.jp.project.app.contract.LargeGenreSearchActivityContract;
 import ramstalk.co.jp.project.app.presenter.LargeGenreSearchActivityPresenter;
 import ramstalk.co.jp.project.app.util.StringUtil;
+import ramstalk.co.jp.project.data.Injection;
 import ramstalk.co.jp.project.data.LargeGenre;
 import ramstalk.co.jp.project.databinding.ActivityLargeGenreSearchBinding;
 import ramstalk.co.jp.project.domain.repository.factory.ApiErrorView;
@@ -49,7 +50,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
 
         LargeGenreSearchActivityContract.View view = this;
         ApiErrorView apiErrorView = this;
-        presenter = new LargeGenreSearchActivityPresenter(getApplicationContext(), view, apiErrorView);
+        presenter = new LargeGenreSearchActivityPresenter(view, apiErrorView, Injection.provideCityRepository(getApplicationContext()), true);
     }
 
     @Override
@@ -136,6 +137,11 @@ public class LargeGenreSearchActivity extends AppCompatActivity
     public void hideLargeGenreList() {
         binding.lvLargeGenre.setVisibility(View.GONE);
         binding.tvLargeGenreNotFound.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void changeMasterDataLoadStatusTo(boolean val) {
+
     }
 
     @Override

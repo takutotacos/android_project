@@ -1,10 +1,10 @@
 package ramstalk.co.jp.project.app.presenter;
 
-import android.content.Context;
-import android.text.TextUtils;
-
 import ramstalk.co.jp.project.app.contract.LargeGenreSearchActivityContract;
+import ramstalk.co.jp.project.data.City;
+import ramstalk.co.jp.project.data.CityList;
 import ramstalk.co.jp.project.data.LargeGenreList;
+import ramstalk.co.jp.project.data.source.CityDataSource;
 import ramstalk.co.jp.project.domain.repository.factory.ApiErrorView;
 import ramstalk.co.jp.project.domain.repository.factory.ApiObserver;
 import ramstalk.co.jp.project.domain.repository.factory.ApiUtil;
@@ -13,48 +13,49 @@ import ramstalk.co.jp.project.domain.repository.factory.ApiUtil;
  * Created by sugitatakuto on 2017/07/24.
  */
 
-public class LargeGenreSearchActivityPresenter implements LargeGenreSearchActivityContract.UserAction {
+public class LargeGenreSearchActivityPresenter implements LargeGenreSearchActivityContract.UserAction, CityDataSource.LoadCityCallback {
 
-    private Context context;
     private LargeGenreSearchActivityContract.View view;
     private ApiErrorView errorView;
+    private final CityDataSource cityRepository;
+    private boolean shouldLoadMasterDataFromRemote;
 
-    public LargeGenreSearchActivityPresenter(Context context,LargeGenreSearchActivityContract.View view, ApiErrorView errorView) {
-        this.context = context;
+    public LargeGenreSearchActivityPresenter(LargeGenreSearchActivityContract.View view, ApiErrorView errorView, CityDataSource cityRepository, boolean shouldLoadMasterDataFromRemote) {
         this.view = view;
         this.errorView = errorView;
+        this.cityRepository = cityRepository;
+        this.shouldLoadMasterDataFromRemote = shouldLoadMasterDataFromRemote;
     }
 
 
     @Override
     public void setInitialDisplay(String areaCd) {
-        if (TextUtils.isEmpty(areaCd)) {
-            areaCd = "shinjuku";
-        }
-        //@Todo
-        // 1. put all the cities into sqlight during starting up
-        // 2. get the city object matching the "areaCd" gained from the activity
-        // 3. pass the city_id to get getLargeGenreList(city_id)
         switch (areaCd) {
             case "shinjuku":
-                getLargeGenreList("3");
+                areaCd = "新宿区";
                 break;
             case "shibuya":
-                getLargeGenreList("12");
+                areaCd = "渋谷区";
                 break;
-
             case "nakano":
-                getLargeGenreList("13");
+                areaCd = "中野区";
                 break;
-
             default:
-                getLargeGenreList("1");
+                areaCd = "新宿区";
+        }
+
+        // get the city object matching the "areaCd" gained from the activity
+        if (shouldLoadMasterDataFromRemote) {
+            loadMasterDataFromRemote(areaCd, this);
+        } else {
+            cityRepository.getCity(areaCd, this);
         }
     }
 
     // 地域ごとに取得対象（お気に入り？）の中ジャンルのみ取得する。
-    private void getLargeGenreList(String areaId) {
-        ApiUtil.getAvailableLargeGenresForArea(areaId)
+    @Override
+    public void onCityLoaded(City city) {
+        ApiUtil.getAvailableLargeGenresForArea(city.getId())
                 .subscribe(new ApiObserver<LargeGenreList>(errorView) {
                     @Override
                     public void onNext(LargeGenreList largeGenres) {
@@ -65,5 +66,25 @@ public class LargeGenreSearchActivityPresenter implements LargeGenreSearchActivi
                         view.showLargeGenreList(largeGenres.getLargeGenreList());
                     }
                 });
+    }
+
+    @Override
+    public void onDataNotAvailable() {
+        errorView.showServerError("Something went wrong");
+    }
+
+    private void loadMasterDataFromRemote(final String areaCd, final CityDataSource.LoadCityCallback loadCityCallback) {
+        // make sure to have master data in the local db
+        ApiUtil.getAllCities()
+        .subscribe(new ApiObserver<CityList>(errorView) {
+            @Override
+            public void onNext(CityList cities) {
+                cityRepository.updateCities(cities.getCityList());
+
+                view.changeMasterDataLoadStatusTo(true);
+                shouldLoadMasterDataFromRemote = false;
+                cityRepository.getCity(areaCd, loadCityCallback);
+            }
+        });
     }
 }
