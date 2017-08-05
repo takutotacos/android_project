@@ -3,8 +3,10 @@ package ramstalk.co.jp.project.domain.repository.factory;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import ramstalk.co.jp.project.data.CityList;
 import ramstalk.co.jp.project.data.LargeGenreList;
 import ramstalk.co.jp.project.data.MiddleGenreList;
+import ramstalk.co.jp.project.data.PrefectureList;
 
 /**
  * Created by sugitatakuto on 2017/07/29.
@@ -13,6 +15,22 @@ import ramstalk.co.jp.project.data.MiddleGenreList;
 public class ApiUtil {
 
     // GET
+
+    public static Observable<PrefectureList> getAllPrefectures() {
+        return RetrofitAdapter.getRetrofit()
+                .create(Api.class)
+                .getAllPrefectures()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static Observable<CityList> getAllCities() {
+        return RetrofitAdapter.getRetrofit()
+                .create(Api.class)
+                .getAllCities()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
     public static Observable<LargeGenreList> getAvailableLargeGenresForArea(String areaId) {
         return RetrofitAdapter.getRetrofit()

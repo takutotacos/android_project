@@ -1,8 +1,10 @@
 package ramstalk.co.jp.project.domain.repository.factory;
 
 import io.reactivex.Observable;
+import ramstalk.co.jp.project.data.CityList;
 import ramstalk.co.jp.project.data.LargeGenreList;
 import ramstalk.co.jp.project.data.MiddleGenreList;
+import ramstalk.co.jp.project.data.PrefectureList;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -14,6 +16,12 @@ import retrofit2.http.Path;
  */
 
 public interface Api {
+
+    @GET("prefectures/")
+    Observable<PrefectureList> getAllPrefectures();
+
+    @GET("cities/")
+    Observable<CityList> getAllCities();
 
     @GET("large_genres/{area_id}")
     Observable<LargeGenreList> getAvailableLargeGenresForArea(@Path("area_id") String areaId);
