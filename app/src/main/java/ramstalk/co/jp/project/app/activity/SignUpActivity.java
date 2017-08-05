@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityC
 
     @Override
     public void onResume() {
-       super.onResume();
+        super.onResume();
         setupUI();
     }
 
@@ -72,8 +72,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityC
 
     @Override
     public void processUserRegisterSuccess() {
-//        SharedPreferences.Editor editor =
-
         Intent i = new Intent(getApplicationContext(), LargeGenreSearchActivity.class);
         i.putExtra(LargeGenreSearchActivity.MESSAGE_FOR_TOAST, "登録が完了しました。");
         startActivity(i);
