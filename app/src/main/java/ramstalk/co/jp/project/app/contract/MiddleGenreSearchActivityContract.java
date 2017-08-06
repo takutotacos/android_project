@@ -10,13 +10,16 @@ import ramstalk.co.jp.project.data.MiddleGenre;
 
 public interface MiddleGenreSearchActivityContract {
     interface View {
-        void showMiddleGenreList(List<MiddleGenre> middleGenres);
+        void showMiddleGenreList(List<MiddleGenre> middleGenres, List<String> subscriptionsMiddleIds);
 
         void hideMiddleGenreList();
     }
 
     interface UserAction {
         void setInitialDisplay(String largeGenreId);
-    }
 
+        void subscribeMiddleGenre(String middleGenreId);
+
+        void unsubscribeMiddleGenre(String middleGenreId);
+    }
 }

@@ -34,8 +34,6 @@ public class LargeGenreSearchActivity extends AppCompatActivity
     private String areaCd;
     private SharedPreferences sharedPreferences;
 
-    private static final String SHARED_PREFERENCES_NAME = "DataStore";
-    private static final String AREA_CD = "area_cd";
     public static final String MESSAGE_FOR_TOAST = "message_for_toast";
 
     @Override
@@ -45,7 +43,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_key_file_name), MODE_PRIVATE);
         showToast();
 
         LargeGenreSearchActivityContract.View view = this;
@@ -109,7 +107,7 @@ public class LargeGenreSearchActivity extends AppCompatActivity
                         areaCd = "none";
                 }
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(AREA_CD, areaCd);
+                editor.putString(getString(R.string.shared_pref_key_area_cd), areaCd);
                 presenter.setInitialDisplay(areaCd);
                 return true;
             }

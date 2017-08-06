@@ -5,4 +5,10 @@
     <string name="no_updated_content_to_show">更新されたコンテンツはありません</string>
     <string name="no_content_found">お探しのページは見つかりません</string>
     <string name="no_genre_found">表示できるジャンルが見つかりません</string>
+
+    <!-- SharedPreferencesのキー -->
+    <string name="shared_pref_key_file_name">DataStore</string>
+    <string name="shared_pref_key_area_cd">area_cd</string>
+    <string name="shared_pref_key_user_id">user_id</string>
+
 </resources>

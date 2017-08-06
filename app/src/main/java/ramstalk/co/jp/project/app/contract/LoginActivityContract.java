@@ -12,7 +12,7 @@ public interface LoginActivityContract {
 
         void showPasswordInputError(String message);
 
-        void processLoginSuccessful();
+        void processLoginSuccessful(String userId);
 
     }
 
@@ -20,5 +20,6 @@ public interface LoginActivityContract {
 
         void login(String email, String password);
 
+        void setInitialUI();
     }
 }

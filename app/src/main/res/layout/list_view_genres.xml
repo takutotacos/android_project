@@ -6,9 +6,15 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding_xl">
 
+    <ToggleButton
+        android:id="@+id/tb_subscribe_middle_genre"
+        app:layout_widthPercent="10%"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tv_genre_name"
-        app:layout_widthPercent="60%"
+        app:layout_widthPercent="50%"
+        android:layout_toRightOf="@id/tb_subscribe_middle_genre"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_xl"
         android:maxLines="1"
@@ -18,8 +24,8 @@
         android:id="@+id/tv_topic_number"
         app:layout_widthPercent="40%"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tv_genre_name"
         android:gravity="end"
         android:textSize="@dimen/text_xl"
-        android:textColor="@color/dim_gray"/>
+        android:textColor="@color/dim_gray"
+        android:layout_toEndOf="@+id/tv_genre_name" />
 </android.support.percent.PercentRelativeLayout>

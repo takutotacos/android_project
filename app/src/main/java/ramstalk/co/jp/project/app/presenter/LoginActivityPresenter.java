@@ -2,6 +2,8 @@ package ramstalk.co.jp.project.app.presenter;
 
 import ramstalk.co.jp.project.app.contract.LoginActivityContract;
 import ramstalk.co.jp.project.app.util.StringUtil;
+import ramstalk.co.jp.project.data.User;
+import ramstalk.co.jp.project.data.source.UserResult;
 import ramstalk.co.jp.project.domain.repository.factory.ApiErrorView;
 import ramstalk.co.jp.project.domain.repository.factory.ApiObserver;
 import ramstalk.co.jp.project.domain.repository.factory.ApiUtil;
@@ -14,24 +16,33 @@ public class LoginActivityPresenter implements LoginActivityContract.Presenter {
 
     private LoginActivityContract.View view;
     private ApiErrorView errorView;
+    private String userId;
 
-    public LoginActivityPresenter(LoginActivityContract.View view, ApiErrorView errorView) {
+    public LoginActivityPresenter(LoginActivityContract.View view, ApiErrorView errorView, String userId) {
         this.view = view;
         this.errorView = errorView;
+        this.userId = userId;
+    }
+
+    @Override
+    public void setInitialUI() {
+        if (StringUtil.isEmpty(userId)) {
+            return;
+        }
+        view.processLoginSuccessful(userId);
     }
 
     @Override
     public void login(String email, String password) {
-
         if (!checkUserInput(email, password)) {
             return;
         }
 
         ApiUtil.postLogin(email, password)
-                .subscribe(new ApiObserver<String>(errorView) {
+                .subscribe(new ApiObserver<UserResult>(errorView) {
                     @Override
-                    public void onNext(String value) {
-                        view.processLoginSuccessful();
+                    public void onNext(UserResult user) {
+                        view.processLoginSuccessful(user.getUser().getId());
                     }
                 });
     }

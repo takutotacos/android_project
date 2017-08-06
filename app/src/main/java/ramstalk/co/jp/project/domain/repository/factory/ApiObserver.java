@@ -1,5 +1,7 @@
 package ramstalk.co.jp.project.domain.repository.factory;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import io.reactivex.observers.DisposableObserver;
@@ -24,6 +26,7 @@ public abstract class ApiObserver<T> extends DisposableObserver<T> {
 
     @Override
     public void onError(Throwable e) {
+        Log.d("[DEBUG]:", e.getStackTrace().toString());
         if (e instanceof IOException) {
             view.showNetworkError(e.getMessage());
         } else if (e instanceof HttpException) {
