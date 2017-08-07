@@ -1,5 +1,7 @@
 package ramstalk.co.jp.project.app.presenter;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +94,7 @@ public class MiddleGenreSearchActivityPresenter implements MiddleGenreSearchActi
 
         @Override
         public void onError(Throwable e) {
+            Log.d("[DEBUG]:", e.getStackTrace().toString());
             apiErrorView.showServerError(e.getMessage());
         }
 
