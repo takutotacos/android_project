@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -75,11 +74,11 @@ public class GenreAdapter<E extends BaseGenreData> extends BaseAdapter {
             // 中ジャンルの場合（ジャンル自体をフォローできる）
 
             ((ToggleButton) convertView.findViewById(R.id.tb_subscribe_middle_genre)).setVisibility(View.VISIBLE);
-            ((ToggleButton) convertView.findViewById(R.id.tb_subscribe_middle_genre)).setSelected(false);
-            ((ToggleButton) convertView.findViewById(R.id.tb_subscribe_middle_genre)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            ((ToggleButton) convertView.findViewById(R.id.tb_subscribe_middle_genre)).setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
+                public void onClick(View v) {
+                    ToggleButton toggle = (ToggleButton) v;
+                    if (toggle.isChecked()) {
                         genreCheckListener.onGenreSubscribed(genres.get(position).getId());
                     } else {
                         genreCheckListener.onGenreUnsubscribed(genres.get(position).getId());
@@ -88,7 +87,7 @@ public class GenreAdapter<E extends BaseGenreData> extends BaseAdapter {
             });
 
             if (subscriptionsMiddleIds.contains(genres.get(position).getId())) {
-                ((ToggleButton) convertView.findViewById(R.id.tb_subscribe_middle_genre)).setSelected(true);
+                ((ToggleButton) convertView.findViewById(R.id.tb_subscribe_middle_genre)).setChecked(true);
             }
         }
         return convertView;
